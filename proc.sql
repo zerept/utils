@@ -5,8 +5,7 @@ DROP PROCEDURE STP_Report_Pie;
 DROP PROCEDURE STP_Request_Dashboard;
 
 
-create
-     procedure STP_Report_Dashboard(IN _start datetime, IN _end datetime)
+CREATE procedure STP_Report_Dashboard(IN _start datetime, IN _end datetime)
 BEGIN
     SELECT status as Type,
            COUNT(1) as Count
@@ -16,8 +15,7 @@ BEGIN
     GROUP BY status;
 END;
 
-create
-     procedure STP_Report_Graph(IN _start datetime, IN _end datetime)
+CREATE procedure STP_Report_Graph(IN _start datetime, IN _end datetime)
 BEGIN
     SELECT a.created_at as Date, COUNT(*) as Count
     FROM `analyze` a
@@ -27,8 +25,7 @@ BEGIN
 END;
 
 
-create
-    procedure STP_Report_Pie(IN _start datetime, IN _end datetime)
+CREATE procedure STP_Report_Pie(IN _start datetime, IN _end datetime)
 BEGIN
     SELECT count(1) as count, status as type
     FROM `analyze` a
@@ -38,8 +35,7 @@ GROUP BY status order by status;
 END;
 
 
-create
-     procedure STP_Request_Dashboard()
+CREATE procedure STP_Request_Dashboard()
 BEGIN
     SELECT count(1) as count, status as type
     FROM `request` r
