@@ -1,0 +1,17 @@
+version: '3'
+networks:
+  default:
+    external:
+      name: docker-network-interna
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    environment:
+      PMA_ARBITRARY: 1
+      UPLOAD_LIMIT: 1024000K
+    restart: always
+    ports:
+      - 29000:80
+    networks: 
+      -  'default'
